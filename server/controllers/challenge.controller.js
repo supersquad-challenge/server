@@ -28,12 +28,14 @@ module.exports = {
         }
       }
 
-      // Update the challengeInfo objects in the database
-      for (let i = 0; i < challengeInfo.length; i++) {
-        const query = { _id: challengeInfo[i]._id };
-        const update = { $set: { challengeStatus: challengeInfo[i].challengeStatus } };
-        await ChallengeInfo.updateOne(query, update);
-      }
+      const updateOps = challengeInfo.map((info) => ({
+        updateOne: {
+          filter: { _id: info._id },
+          update: { $set: { challengeStatus: info.challengeStatus } },
+        },
+      }));
+
+      await ChallengeInfo.bulkWrite(updateOps);
 
       const challenges = challengeInfo.map((info) => ({
         challengeId: info._id,
