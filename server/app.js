@@ -52,7 +52,7 @@ app.use(
       'https://super-squad-delta.vercel.app',
       'https://supersquad.asia',
       'https://supersquad-proto-front.vercel.app',
-      'https://supersquad-proto-front-kzewzj80v-chrislees-projects.vercel.app',
+      //'https://supersquad-proto-front-kzewzj80v-chrislees-projects.vercel.app',
     ],
     credentials: true,
   })
