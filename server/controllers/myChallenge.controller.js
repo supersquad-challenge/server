@@ -120,7 +120,7 @@ module.exports = {
       });
 
       const callDate = new Date();
-      console.log(callDate);
+      //console.log(callDate);
 
       res.status(200).json({
         message: 'My status found',
