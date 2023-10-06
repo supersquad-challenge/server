@@ -301,8 +301,14 @@ module.exports = {
         userChallenge_id: userChallengeId,
       });
 
+      if (!verifyPhotos || verifyPhotos.length === 0) {
+        return res.status(404).json({
+          error: 'Verification Photo not found',
+        });
+      }
+
       const currentDate = new Date();
-      let isVerified = false;
+      let isUploaded = false;
 
       for (const verifyPhoto of verifyPhotos) {
         const uploadedDate = new Date(verifyPhoto.uploadedAt);
@@ -313,14 +319,14 @@ module.exports = {
           currentDate.getMonth() === convertedUploadedDate.getMonth() &&
           currentDate.getDate() === convertedUploadedDate.getDate()
         ) {
-          isVerified = true;
+          isUploaded = true;
           break;
         }
       }
 
       res.status(200).json({
         message: 'Verification Photo found',
-        isVerified,
+        isUploaded,
       });
     } catch (error) {
       console.log(error);
