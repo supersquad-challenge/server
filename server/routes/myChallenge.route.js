@@ -9,5 +9,6 @@ router.post('/userChallengeId/', myChallenge.getMychallengeByChallengeId);
 router.get('/myStatus/:userChallengeId', myChallenge.getMyStatus);
 router.get('/totalStatus/:userChallengeId', myChallenge.getTotalStatus);
 router.get('/payback/:userChallengeId', myChallenge.getPayback);
+router.get('/verifyPhoto/:userChallengeId', myChallenge.getVerifyPhoto);
 
 module.exports = router;

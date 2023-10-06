@@ -1,5 +1,6 @@
 const ChallengeInfo = require('../models/challengeInfo.model');
 const UserChallenge = require('../models/userChallenge.model');
+const VerificationPhoto = require('../models/verificationPhoto.model');
 
 module.exports = {
   registerMyChallenge: async (req, res) => {
@@ -114,9 +115,12 @@ module.exports = {
       }
 
       const challengeInfo = await ChallengeInfo.findById(userChallengeInfo.challenge_id);
+      const verificationPhotoInfo = await VerificationPhoto.find({
+        userChallenge_id: req.params.userChallengeId,
+      });
 
-      //console.log(userChallengeInfo);
-      //console.log(challengeInfo);
+      const callDate = new Date();
+      console.log(callDate);
 
       res.status(200).json({
         message: 'My status found',
@@ -283,6 +287,41 @@ module.exports = {
           },
         });
       }
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({
+        error: 'Internal Server Error',
+      });
+    }
+  },
+  getVerifyPhoto: async (req, res) => {
+    try {
+      const { userChallengeId } = req.params;
+      const verifyPhotos = await VerificationPhoto.find({
+        userChallenge_id: userChallengeId,
+      });
+
+      const currentDate = new Date();
+      let isVerified = false;
+
+      for (const verifyPhoto of verifyPhotos) {
+        const uploadedDate = new Date(verifyPhoto.uploadedAt);
+        const timezoneOffset = uploadedDate.getTimezoneOffset() * 60 * 1000;
+        const convertedUploadedDate = new Date(uploadedDate.getTime() - timezoneOffset);
+
+        if (
+          currentDate.getMonth() === convertedUploadedDate.getMonth() &&
+          currentDate.getDate() === convertedUploadedDate.getDate()
+        ) {
+          isVerified = true;
+          break;
+        }
+      }
+
+      res.status(200).json({
+        message: 'Verification Photo found',
+        isVerified,
+      });
     } catch (error) {
       console.log(error);
       res.status(500).json({
