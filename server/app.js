@@ -20,7 +20,10 @@ app.use(
   })
 );
 
-app.use(morgan('dev'));
+//app.use(morgan('dev'));
+app.use(
+  morgan(':remote-addr :method :url :status :res[content-length] - :response-time ms')
+);
 
 // cookie-session 0.6.0 오류로 인해 추가
 app.use(function (req, res, next) {
