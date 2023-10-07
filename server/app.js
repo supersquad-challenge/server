@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const path = require('path');
 const cookieSession = require('cookie-session');
+const morgan = require('morgan');
 
 const mongoose = require('mongoose');
 const passport = require('passport');
@@ -18,6 +19,8 @@ app.use(
     expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 1 month
   })
 );
+
+app.use(morgan('dev'));
 
 // cookie-session 0.6.0 오류로 인해 추가
 app.use(function (req, res, next) {
@@ -53,7 +56,7 @@ app.use(
       'https://supersquad.asia',
       'https://supersquad-proto-front.vercel.app',
       'https://supersquad-proto-front-kzewzj80v-chrislees-projects.vercel.app',
-			'https://front-end-neo.vercel.app',
+      'https://front-end-neo.vercel.app',
     ],
     credentials: true,
   })
