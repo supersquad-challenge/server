@@ -13,7 +13,7 @@ router.get(
   '/google/callback',
   passport.authenticate('google', {
     //successReturnToOrRedirect: 'https://super-squad-delta.vercel.app/home/',
-    successReturnToOrRedirect: 'http://localhost:3000/home/',
+    successReturnToOrRedirect: '/auth/login',
     failureRedirect: '/',
     session: true,
   })
