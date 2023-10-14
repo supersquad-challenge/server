@@ -31,6 +31,6 @@ SuperSquad stands out by combining the concept of habit-building with a money po
   - My challenge registration
     - Deposit, status
   - Transaction information registration
-    - XRP deposit, distribution based on results
+    - deposit, distribution based on results
   - Verification
     - Photo registration and verification
