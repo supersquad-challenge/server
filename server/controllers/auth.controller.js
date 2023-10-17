@@ -34,15 +34,12 @@ const googleStrategyConfig = new GoogleStrategy(
     try {
       const existingUser = await UserInfo.findOne({ googleId: profile.id });
 
-      //console.log(existingUser);
-
-      // console.log('accessToken', accessToken);
-      // console.log('refreshToken', refreshToken);
-      //console.log('profile', profile);
-      // console.log('id_token', id_token);
       if (existingUser) {
+        existingUser.accessToken = accessToken; // accessToken 추가
+        await existingUser.save(); // 변경된 내용 저장
         return done(null, existingUser);
       }
+
       const newUser = new UserInfo({
         email: profile.emails[0].value,
         googleId: profile.id,
@@ -53,7 +50,9 @@ const googleStrategyConfig = new GoogleStrategy(
         isCookieAllowed: true,
         role: 'user',
         address: '',
+        accessToken: accessToken, // accessToken 추가
       });
+
       const user = await newUser.save();
       done(null, user);
     } catch (err) {
