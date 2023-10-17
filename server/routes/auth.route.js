@@ -17,9 +17,10 @@ router.get(
   }),
   function (req, res) {
     // accessToken을 쿠키에 저장
-    res.cookie('accessToken', req.user.id_token, { httpOnly: true });
+    res.cookie('id_token', req.user.id_token, { httpOnly: true });
     // 리디렉션
-    res.redirect('https://super-squad-delta.vercel.app/home/');
+
+    //res.redirect('https://super-squad-delta.vercel.app/home/');
   }
 );
 
