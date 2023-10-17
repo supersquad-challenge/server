@@ -37,8 +37,8 @@ const googleStrategyConfig = new GoogleStrategy(
       //console.log(id_token);
 
       if (existingUser) {
-        existingUser.id_token = id_token; // accessToken 추가
-        await existingUser.save(); // 변경된 내용 저장
+        //existingUser.id_token = id_token; // accessToken 추가
+        //await existingUser.save(); // 변경된 내용 저장
         return done(null, existingUser);
       }
 
@@ -52,7 +52,7 @@ const googleStrategyConfig = new GoogleStrategy(
         isCookieAllowed: true,
         role: 'user',
         address: '',
-        id_token: id_token, // accessToken 추가
+        //id_token: id_token, // accessToken 추가
       });
 
       const user = await newUser.save();

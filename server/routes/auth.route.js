@@ -12,16 +12,11 @@ router.get(
 router.get(
   '/google/callback',
   passport.authenticate('google', {
+    successReturnToOrRedirect: 'https://super-squad-delta.vercel.app/home/',
+    //successReturnToOrRedirect: '/auth/login',
     failureRedirect: '/',
     session: true,
-  }),
-  function (req, res) {
-    // accessToken을 쿠키에 저장
-    res.cookie('id_token', req.user.id_token, { httpOnly: true });
-    // 리디렉션
-
-    res.redirect('https://super-squad-delta.vercel.app/home/');
-  }
+  })
 );
 
 router.get('/login', (req, res) => {
