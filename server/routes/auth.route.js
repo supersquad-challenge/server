@@ -12,8 +12,8 @@ router.get(
 router.get(
   '/google/callback',
   passport.authenticate('google', {
-    //successReturnToOrRedirect: 'https://super-squad-delta.vercel.app/home/',
-    successReturnToOrRedirect: '/auth/login',
+    successReturnToOrRedirect: 'https://super-squad-delta.vercel.app/home/',
+    //successReturnToOrRedirect: '/auth/login',
     failureRedirect: '/',
     session: true,
   })
