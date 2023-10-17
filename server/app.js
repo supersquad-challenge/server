@@ -17,13 +17,15 @@ app.use(
     name: 'cookie-session',
     keys: [process.env.SESSION_SECRET],
     expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 1 month
+    SameSite: 'none',
+    secure: true,
   })
 );
 
-//app.use(morgan('dev'));
-app.use(
-  morgan(':remote-addr :method :url :status :res[content-length] - :response-time ms')
-);
+app.use(morgan('dev'));
+// app.use(
+//   morgan(':remote-addr :method :url :status :res[content-length] - :response-time ms')
+// );
 
 // cookie-session 0.6.0 오류로 인해 추가
 app.use(function (req, res, next) {
@@ -44,7 +46,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //app.use('/static', express.static(path.join(__dirname, 'public')));
-//app.use(express.static('public'));
+app.use(express.static('public'));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
