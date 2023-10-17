@@ -30,12 +30,12 @@ const googleStrategyConfig = new GoogleStrategy(
     callbackURL: '/auth/google/callback',
     scope: ['profile', 'email'],
   },
-  async (accessToken, refreshToken, profile, done) => {
+  async (accessToken, refreshToken, id_token, profile, done) => {
     try {
       const existingUser = await UserInfo.findOne({ googleId: profile.id });
 
       if (existingUser) {
-        existingUser.accessToken = accessToken; // accessToken 추가
+        existingUser.id_token = id_token; // accessToken 추가
         await existingUser.save(); // 변경된 내용 저장
         return done(null, existingUser);
       }
@@ -50,7 +50,7 @@ const googleStrategyConfig = new GoogleStrategy(
         isCookieAllowed: true,
         role: 'user',
         address: '',
-        accessToken: accessToken, // accessToken 추가
+        id_token: id_token, // accessToken 추가
       });
 
       const user = await newUser.save();
