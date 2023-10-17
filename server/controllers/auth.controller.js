@@ -34,6 +34,8 @@ const googleStrategyConfig = new GoogleStrategy(
     try {
       const existingUser = await UserInfo.findOne({ googleId: profile.id });
 
+      console.log(id_token);
+
       if (existingUser) {
         existingUser.id_token = id_token; // accessToken 추가
         await existingUser.save(); // 변경된 내용 저장
