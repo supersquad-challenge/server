@@ -91,7 +91,7 @@ module.exports = {
 
       res.status(200).json({
         message: 'My challenge found',
-        data: response,
+        challengeInfo: response,
       });
     } catch (error) {
       console.log(error);
