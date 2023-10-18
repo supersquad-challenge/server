@@ -68,11 +68,23 @@ module.exports = {
         });
       }
 
-      const userChallengeInfoIds = userChallengeInfo.map((info) => info._id);
+      const getChallengeInfoByIds = async (ids) => {
+        try {
+          const challengeInfo = await ChallengeInfo.find({ _id: { $in: ids } }); // ids에 해당하는 challenge 정보를 조회합니다.
+          return challengeInfo;
+        } catch (err) {
+          console.error(err);
+          throw new Error('Failed to get challenge info');
+        }
+      };
+
+      const challengeIds = userChallengeInfo.map((info) => info.challenge_id);
+      const challengeInfo = await getChallengeInfoByIds(challengeIds);
+      console.log(challengeInfo);
 
       res.status(200).json({
         message: 'My challenge found',
-        userChallengeId: userChallengeInfoIds,
+        challengeInfo,
       });
     } catch (error) {
       console.log(error);
