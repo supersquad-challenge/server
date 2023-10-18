@@ -1,4 +1,5 @@
 const ChallengeInfo = require('../models/challengeInfo.model');
+const UserChallenge = require('../models/userChallenge.model');
 
 module.exports = {
   getChallengeAll: async (req, res) => {
@@ -87,6 +88,30 @@ module.exports = {
           challengeVerificationMethod: challengeInfo.challengeVerificationMethod,
           cryptoYield: challengeInfo.cryptoYield,
         },
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({
+        error: 'Internal Server Error',
+      });
+    }
+  },
+  getChallengeByUserChallengeId: async (req, res) => {
+    try {
+      const userChallengeInfo = await UserChallenge.findById(req.params.userChallengeId);
+      //console.log(userChallengeInfo);
+
+      if (!userChallengeInfo) {
+        return res.status(404).json({
+          error: 'Challenge not found',
+        });
+      }
+
+      const challengeInfo = await ChallengeInfo.findById(userChallengeInfo.challenge_id);
+
+      res.status(200).json({
+        message: 'Challenge found',
+        challengeInfo,
       });
     } catch (error) {
       console.log(error);

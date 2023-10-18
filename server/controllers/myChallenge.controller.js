@@ -62,6 +62,8 @@ module.exports = {
         userInfo_id: req.params.userInfoId,
       });
 
+      const userChallengeIds = userChallengeInfo.map((info) => info._id);
+
       if (!userChallengeInfo) {
         return res.status(404).json({
           error: 'My challenge not found',
@@ -82,9 +84,14 @@ module.exports = {
       const challengeInfo = await getChallengeInfoByIds(challengeIds);
       //console.log(challengeInfo);
 
+      const response = challengeInfo.map((info, index) => ({
+        ...info.toObject(),
+        userChallengeId: userChallengeIds[index],
+      }));
+
       res.status(200).json({
         message: 'My challenge found',
-        challengeInfo,
+        data: response,
       });
     } catch (error) {
       console.log(error);
