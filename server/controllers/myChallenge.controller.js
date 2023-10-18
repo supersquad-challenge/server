@@ -80,7 +80,7 @@ module.exports = {
 
       const challengeIds = userChallengeInfo.map((info) => info.challenge_id);
       const challengeInfo = await getChallengeInfoByIds(challengeIds);
-      console.log(challengeInfo);
+      //console.log(challengeInfo);
 
       res.status(200).json({
         message: 'My challenge found',
