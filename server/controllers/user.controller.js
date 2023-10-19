@@ -48,7 +48,7 @@ module.exports = {
       }
 
       res.status(200).json({
-        message: 'User nickname update',
+        message: 'User wallet address update',
         userInfo: {
           userInfoId: updateUser._id,
           address: updateUser.address,
