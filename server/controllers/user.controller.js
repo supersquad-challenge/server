@@ -33,10 +33,10 @@ module.exports = {
   },
   registerAddress: async (req, res) => {
     try {
-      const { email, address } = req.body;
+      const { userInfoId, address } = req.body;
 
-      const updateUser = await UserInfo.findOneAndUpdate(
-        { email: email },
+      const updateUser = await UserInfo.findByIdAndUpdate(
+        userInfoId,
         { $set: { address: address } },
         { new: true }
       );
