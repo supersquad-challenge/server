@@ -3,10 +3,10 @@ const UserInfo = require('../models/userInfo.model');
 module.exports = {
   registerUserName: async (req, res) => {
     try {
-      const { email, nickname } = req.body;
+      const { userInfoId, nickname } = req.body;
 
-      const updateUser = await UserInfo.findOneAndUpdate(
-        { email: email },
+      const updateUser = await UserInfo.findByIdAndUpdate(
+        userInfoId,
         { $set: { nickname: nickname } },
         { new: true }
       );
