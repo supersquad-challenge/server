@@ -61,6 +61,7 @@ app.use(
       'https://supersquad-proto-front-kzewzj80v-chrislees-projects.vercel.app',
       'https://front-end-neo.vercel.app',
       'https://supersquad-nine.vercel.app',
+      'https://supersquad-n.vercel.app',
     ],
     credentials: true,
   })
