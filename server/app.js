@@ -60,7 +60,7 @@ app.use(
       'https://supersquad-proto-front.vercel.app',
       'https://supersquad-proto-front-kzewzj80v-chrislees-projects.vercel.app',
       'https://front-end-neo.vercel.app',
-      'https://supersquad-nine.vercel.app/',
+      'https://supersquad-nine.vercel.app',
     ],
     credentials: true,
   })
