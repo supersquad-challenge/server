@@ -26,6 +26,7 @@ const ChallengeInfoSchema = new Schema({
   cryptoYield: Number,
   description: String,
   challengeThumbnail: String,
+	poolAddress: String
 });
 
 module.exports = mongoose.model('ChallengeInfo', ChallengeInfoSchema);
