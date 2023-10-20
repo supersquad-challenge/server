@@ -12,8 +12,8 @@ router.get(
 router.get(
   '/google/callback',
   passport.authenticate('google', {
-    successReturnToOrRedirect: 'http://localhost:3000/signup/connect',
-    //successReturnToOrRedirect: '/auth/login',
+    //successReturnToOrRedirect: 'http://localhost:3000/signup/connect',
+    successReturnToOrRedirect: 'http://localhost:3000/home',
     failureRedirect: '/',
     session: true,
   })

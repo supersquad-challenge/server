@@ -21,9 +21,9 @@ app.use(
 );
 
 //app.use(morgan('dev'));
-app.use(
-  morgan(':remote-addr :method :url :status :res[content-length] - :response-time ms')
-);
+// app.use(
+//   morgan(':remote-addr :method :url :status :res[content-length] - :response-time ms')
+// );
 
 // cookie-session 0.6.0 오류로 인해 추가
 app.use(function (req, res, next) {
@@ -60,6 +60,7 @@ app.use(
       'https://supersquad-proto-front.vercel.app',
       'https://supersquad-proto-front-kzewzj80v-chrislees-projects.vercel.app',
       'https://front-end-neo.vercel.app',
+      'https://supersquad-nine.vercel.app/',
     ],
     credentials: true,
   })
