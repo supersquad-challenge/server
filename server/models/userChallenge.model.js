@@ -2,6 +2,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 const UserChallengeSchema = new Schema({
+  challengeStartsAt: String,
+  challengeEndsAt: String,
   depositMethod: String,
   deposit: Number,
   verificationStatus: { type: Schema.Types.Mixed },

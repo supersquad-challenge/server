@@ -13,23 +13,11 @@ router.get(
   '/google/callback',
   passport.authenticate('google', {
     successReturnToOrRedirect: 'https://supersquad-nine.vercel.app/',
-    //successReturnToOrRedirect: 'http://localhost:3000/home',
+    //successReturnToOrRedirect: 'http://localhost:3000',
     failureRedirect: '/',
     session: true,
   })
 );
-
-// router.get(
-//   '/google/callback',
-//   passport.authenticate('google', {
-//     failureRedirect: '/',
-//     session: true,
-//   }),
-//   (req, res) => {
-//     // 요청한 도메인의 홈페이지로 리다이렉트
-//     res.redirect(req.get('origin') + '/home');
-//   }
-// );
 
 router.get('/login', (req, res) => {
   //console.log(req.session.passport.user);

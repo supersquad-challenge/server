@@ -19,15 +19,15 @@ module.exports = {
         endsAt: new Date(info.challengeEndsAt).getTime(),
       }));
 
-      for (let i = 0; i < challengeInfo.length; i++) {
-        if (timestamps[i].startsAt > today) {
-          challengeInfo[i].challengeStatus = 'onApplication';
-        } else if (timestamps[i].endsAt < today) {
-          challengeInfo[i].challengeStatus = 'completed';
-        } else {
-          challengeInfo[i].challengeStatus = 'ongoing';
-        }
-      }
+      // for (let i = 0; i < challengeInfo.length; i++) {
+      //   if (timestamps[i].startsAt > today) {
+      //     challengeInfo[i].challengeStatus = 'onApplication';
+      //   } else if (timestamps[i].endsAt < today) {
+      //     challengeInfo[i].challengeStatus = 'completed';
+      //   } else {
+      //     challengeInfo[i].challengeStatus = 'ongoing';
+      //   }
+      // }
 
       const updateOps = challengeInfo.map((info) => ({
         updateOne: {

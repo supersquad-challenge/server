@@ -28,7 +28,13 @@ module.exports = {
         });
       }
 
+      const startDate = new Date();
+      const endDate = new Date(startDate);
+      endDate.setDate(startDate.getDate() + 14); // 2주를 더함
+
       const userRegisterData = {
+        challengeStartsAt: startDate.toISOString().slice(0, 10),
+        challengeEndsAt: endDate.toISOString().slice(0, 10),
         depositMethod: '',
         deposit: 0,
         completeNum: challengeInfo.challengeTotalVerificationNum,
@@ -151,8 +157,8 @@ module.exports = {
           challengeName: challengeInfo.challengeName,
           challengeStatus: challengeInfo.challengeStatus,
           challengeVerificationFrequency: challengeInfo.challengeVerificationFrequency,
-          challengeStartsAt: challengeInfo.challengeStartsAt,
-          challengeEndsAt: challengeInfo.challengeEndsAt,
+          challengeStartsAt: userChallengeInfo.challengeStartsAt,
+          challengeEndsAt: userChallengeInfo.challengeEndsAt,
           userChallengeId: userChallengeInfo._id,
           challengeParticipantsCount: challengeInfo.challengeParticipantsCount,
           challengeTotalDeposit: challengeInfo.challengeTotalDeposit,
