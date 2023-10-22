@@ -8,14 +8,14 @@ const googleClientID = process.env.GOOGLE_CLIENT_ID;
 const googleClientSecret = process.env.GOOGLE_CLIENT_SECRET;
 
 passport.serializeUser((user, done) => {
-  console.log('serializeUser', user);
+  console.log('serializeUser');
   done(null, user.id);
 });
 
 passport.deserializeUser(async (id, done) => {
   try {
     const user = await UserInfo.findById(id);
-    console.log('deserializeUser', user);
+    console.log('deserializeUser');
 
     done(null, user);
   } catch (err) {

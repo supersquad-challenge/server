@@ -9,14 +9,26 @@ router.get(
   passport.authenticate('google', { scope: ['profile', 'email'], session: false })
 );
 
+// router.get(
+//   '/google/callback',
+//   passport.authenticate('google', {
+//     //successReturnToOrRedirect: 'http://localhost:3000/signup/connect',
+//     successReturnToOrRedirect: 'http://localhost:3000/home',
+//     failureRedirect: '/',
+//     session: true,
+//   })
+// );
+
 router.get(
   '/google/callback',
   passport.authenticate('google', {
-    //successReturnToOrRedirect: 'http://localhost:3000/signup/connect',
-    successReturnToOrRedirect: 'http://localhost:3000/home',
     failureRedirect: '/',
     session: true,
-  })
+  }),
+  (req, res) => {
+    // 요청한 도메인의 홈페이지로 리다이렉트
+    res.redirect(req.get('origin') + '/home');
+  }
 );
 
 router.get('/login', (req, res) => {
