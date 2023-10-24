@@ -89,6 +89,7 @@ module.exports = {
           challengeVerificationMethod: challengeInfo.challengeVerificationMethod,
           cryptoYield: challengeInfo.cryptoYield,
           poolAddress: challengeInfo.poolAddress,
+          description: challengeInfo.description,
         },
       });
     } catch (error) {
