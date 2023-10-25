@@ -51,6 +51,7 @@ module.exports = {
         challengeParticipantsCount: info.challengeParticipantsCount,
         challengeTotalDeposit: info.challengeTotalDeposit,
         poolAddress: info.poolAddress,
+        challengeThumbnail: info.challengeThumbnail,
       }));
 
       res.status(200).json({
