@@ -361,4 +361,22 @@ module.exports = {
       });
     }
   },
+  getThumbnail: async (req, res) => {
+    try {
+      const { userChallengeId } = req.params;
+
+      const userChallenge = await UserChallenge.findById(userChallengeId);
+      const challenge = await ChallengeInfo.findById(userChallenge.challenge_id);
+
+      res.status(200).json({
+        message: 'Thumbnail found',
+        thumbnail: challenge.challengeThumbnail,
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({
+        error: 'Internal Server Error',
+      });
+    }
+  },
 };
