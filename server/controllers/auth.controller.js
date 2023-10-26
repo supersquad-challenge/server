@@ -27,7 +27,7 @@ const googleStrategyConfig = new GoogleStrategy(
   {
     clientID: googleClientID,
     clientSecret: googleClientSecret,
-    callbackURL: '/auth/google/callback',
+    callbackURL: 'https://supersquad.asia/auth/google/callback',
     scope: ['profile', 'email'],
   },
   async (accessToken, refreshToken, profile, done) => {
